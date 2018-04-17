@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+  	{{ message.content }}
+  	<div>
+  		<span class="label label-info">{{ message.labels }}</span>
+  	</div>
+  </div>
+  <footer class="panel-footer">
+  	<div class="info">
+  		<span class="author">author</span> <span class="timestamp">{{ message.dateTime }}</span>
+  	</div>
+		<div class="actions">
+			<a href="#">edit</a>
+			<a href="#">delete</a>
+		</div>
+  </footer>
+</div>

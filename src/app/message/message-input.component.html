@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Message Input</div>
+  <div class="panel-body">
+		<form [formGroup]="messageInputForm" novalidate>
+		  <div class="form-group"  
+			  [ngClass]="{
+	  			'has-error': plateNumber.invalid && plateNumber.touched
+	  		}">
+		    <label for="plateNumber">Plate Number</label>
+		    <input type="text" class="form-control" formControlName="plateNumber" required>
+		  </div>
+		  <div class="form-group"
+		  	[ngClass]="{
+	  			'has-error': plateState.invalid && plateState.touched
+	  		}">
+		    <label for="plateState">Plate State</label>
+		    <select class="form-control" formControlName="plateState" required>
+					<option disabled selected value>- Select a State -</option>
+					<option *ngFor="let state of states" [value]="state">{{ state }}</option>
+		    </select>
+		  </div>
+		  <div class="form-group"
+		  	[ngClass]="{
+	  			'has-error': message.invalid && message.touched
+	  		}">
+		    <label for="message">Message</label>
+		    <textarea class="form-control" formControlName="message" required></textarea>
+		  </div>
+		  <button [disabled]="!messageInputForm.valid" type="submit" class="btn btn-primary" (click)="onSend()">Send</button>
+		</form>
+	</div>
+</div>
+
+<!-- Note: Remove this later -->
+<!-- <pre>{{ messageInputForm.value | json }}</pre>
+<pre>Plate Number Valid? {{ messageInputForm.controls.plateNumber.valid }}</pre>
+<pre>Plate Number Touched? {{ messageInputForm.controls.plateNumber.touched }}</pre> -->
