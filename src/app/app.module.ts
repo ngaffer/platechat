@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+// import { routing } from './app.routing';
 import { DataService } from './data.service';
 import { MessageComponent } from './message/message.component';
 import { MessageListComponent } from './message/message-list.component';

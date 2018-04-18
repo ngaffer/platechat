@@ -7,7 +7,7 @@
 	  			'has-error': plateNumber.invalid && plateNumber.touched
 	  		}">
 		    <label for="plateNumber">Plate Number</label>
-		    <input type="text" class="form-control" formControlName="plateNumber" required>
+		    <input type="text" class="form-control" formControlName="plateNumber" id="plateNumber" aria-describedby="plateNumber" required>
 		  </div>
 		  <div class="form-group"
 		  	[ngClass]="{

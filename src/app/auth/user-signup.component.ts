@@ -1,6 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
+
+function emailDomainValidator(control: FormControl) {
+  let email = control.value;
+  if (email && email.indexOf("@") != -1) {
+    let [_, domain] = email.split("@");
+    if (domain !== "codecraft.tv") {
+      return {
+        emailDomain: {
+          parsedDomain: domain
+        }
+      }
+    }
+  }
+  return null;
+}
+
+// function passwordMatchValidator(control: FormControl) {
+//   let control = control.value;
+//   console.log(control);
+//   return null;
+// }
+
+
 @Component({
   selector: 'app-user-signup',
   templateUrl: './user-signup.component.html',
@@ -8,11 +31,13 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class UserSignupComponent implements OnInit {
 
-	signupForm: FormGroup;
+  signupForm: FormGroup;
 	firstName: FormControl;
 	lastName: FormControl;
 	email: FormControl;
+  passwordValid: FormGroup;
 	password: FormControl;
+  rePassword: FormControl;
 
   ngOnInit() {
   	this.createFormControls();
@@ -22,8 +47,19 @@ export class UserSignupComponent implements OnInit {
   createFormControls() {
   	this.firstName = new FormControl('', Validators.required);
   	this.lastName = new FormControl('', Validators.required);
-  	this.email = new FormControl('', Validators.required);
-  	this.password = new FormControl('', Validators.required);
+  	this.email = new FormControl('', [
+      Validators.required, 
+      Validators.pattern("[^ @]*@[^ @]*"),
+      emailDomainValidator
+    ]);
+  	this.password = new FormControl('', [
+      Validators.minLength(8), 
+      Validators.required
+    ]);
+    this.rePassword = new FormControl('', [
+      Validators.required,
+      // passwordMatchValidator
+    ]);
   }
 
   createForm() {
@@ -31,7 +67,10 @@ export class UserSignupComponent implements OnInit {
   		firstName: this.firstName,
   		lastName: this.lastName,
   		email: this.email,
-  		password: this.password
+      passwordValid: new FormGroup({
+        password: this.password,
+        rePassword: this.rePassword
+      })
   	});
   }
 

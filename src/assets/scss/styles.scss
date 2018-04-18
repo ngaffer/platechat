@@ -1,3 +1,7 @@
 @import 'app-bootstrap';
 @import 'app-variables';
 @import 'app-mixins';
+
+.backstage pre {
+	margin: 0;
+}
