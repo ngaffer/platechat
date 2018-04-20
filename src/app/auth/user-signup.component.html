@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">User Signup</div>
 	<div class="panel-body">
-		<form [formGroup]="signupForm" novalidate>
+		<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
 		  <div class="form-group"
 		  	[ngClass]="{
 	  			'has-error': firstName.invalid && firstName.touched,
@@ -63,7 +63,7 @@
 					</div>
 			  </div>
 			</fieldset>
-		  <button [disabled]="!signupForm.valid" type="submit" class="btn btn-primary" (click)="onSignup">Signup</button>
+		  <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid">Signup</button>
 		</form>
 		<div>
 			<a class="backstage" href="">Behind the scenes +</a>
