@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">Message Input</div>
   <div class="panel-body">
-		<form [formGroup]="messageInputForm" novalidate>
+		<form [formGroup]="messageInputForm" (ngSubmit)="onSubmit()" novalidate>
 		  <div class="form-group"  
 			  [ngClass]="{
 	  			'has-error': plateNumber.invalid && plateNumber.touched
@@ -26,7 +26,7 @@
 		    <label for="content">Message</label>
 		    <textarea class="form-control" formControlName="content" required #input></div>></textarea>
 		  </div>
-		  <button [disabled]="!messageInputForm.valid" type="submit" class="btn btn-primary" (click)="onSend(input.value)">Send</button>
+		  <button [disabled]="!messageInputForm.valid" type="submit" class="btn btn-primary">Send</button>
 		</form>
 	</div>
 </div>

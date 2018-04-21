@@ -4,11 +4,11 @@ export class User {
 		public lastName: string,
 		public password: string,
 		public email: string,
-		public userId: string,
-		public plateId: string,
-		public phone: string,
-		public groupIds: string,
-		public allowTexts: boolean,
-		public allowEmail: boolean) {
+		public userId?: string,
+		public plateId?: string,
+		public phone?: string,
+		public groupIds?: string,
+		public allowTexts?: boolean,
+		public allowEmail?: boolean) {
 	}
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
+import { User } from './user.model';
+import { AuthService } from './auth.service';
+
 
 function emailDomainValidator(control: FormControl) {
   let email = control.value;
@@ -30,6 +33,8 @@ function emailDomainValidator(control: FormControl) {
   styleUrls: ['./user-signup.component.scss']
 })
 export class UserSignupComponent implements OnInit {
+
+  constructor(private authService: AuthService) {}
 
   signupForm: FormGroup;
 	firstName: FormControl;
@@ -75,7 +80,8 @@ export class UserSignupComponent implements OnInit {
   }
 
   onSignup() {
-  	alert('it worked');
+  	const user = new User('Natasha','Gaffer','testsecret','nat@gmail.com');
+    this.authService.addUser(user);
   }
 
 }
