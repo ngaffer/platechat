@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
 	selector: 'app-header',
-	template: `
-		<header>
-			<h1>Plate Chat (Beta)</h1>
-		</header>
-	`,
+	templateUrl: './header.component.html',
 	styles	: [`
 		h1 {
 			text-align: center;
