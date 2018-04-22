@@ -46,11 +46,11 @@ export class MessageInputComponent implements OnInit {
   }
 
   onSubmit() {
-  	// const message = new Message(this.messageInputForm.content, 'Max');
-   //  const plate = new Plate(this.messageInputForm.plateNumber, this.messageInputForm.plateState, 'Max');
-   //  this.messageService.addMessage(message);
+    const message = new Message(this.messageInputForm.value.content, 'Max');
+    const plate = new Plate(this.messageInputForm.value.plateNumber, this.messageInputForm.value.plateState, 'Max');
+    this.messageService.addMessage(message);
     // this.authService.addPlate(plate);
-    console.log(this.messageInputForm.value);
+    this.messageInputForm.reset();
   }
 
 }
