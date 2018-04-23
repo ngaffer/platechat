@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { DataService } from './data.service';
-import { MessageService } from './message/message.service';
+import { MessageService } from './messages/message.service';
 import { AuthService } from './auth/auth.service';
 
 @Component({

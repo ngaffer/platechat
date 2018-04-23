@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { MessageService } from './message.service';
-import { AuthService } from '../auth/auth.service';
-import { Message } from './message.model';
-import { Plate } from '../auth/plate.model';
+import { MessageService } from '../message.service';
+import { AuthService } from '../../auth/auth.service';
+import { Message } from '../message.model';
+import { Plate } from '../../auth/plate.model';
 
 @Component({
   selector: 'app-message-input',

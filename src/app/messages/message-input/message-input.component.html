@@ -1,0 +1,46 @@
+<div class="col-md-8">
+	<div class="panel panel-default">
+	  <div class="panel-heading">Message Input</div>
+	  <div class="panel-body">
+			<form [formGroup]="messageInputForm" (ngSubmit)="onSubmit()" novalidate>
+			  <div class="form-group"  
+				  [ngClass]="{
+		  			'has-error': plateNumber.invalid && plateNumber.touched
+		  		}">
+			    <label for="plateNumber">Plate Number</label>
+			    <input type="text" class="form-control" formControlName="plateNumber" id="plateNumber" aria-describedby="plateNumber" required>
+			  </div>
+			  <div class="form-group"
+			  	[ngClass]="{
+		  			'has-error': plateState.invalid && plateState.touched
+		  		}">
+			    <label for="plateState">Plate State</label>
+			    <select class="form-control" formControlName="plateState" required>
+						<option disabled selected value>- Select a State -</option>
+						<option *ngFor="let state of states" [value]="state">{{ state }}</option>
+			    </select>
+			  </div>
+			  <div class="form-group"
+			  	[ngClass]="{
+		  			'has-error': content.invalid && content.touched
+		  		}">
+			    <label for="content">Message</label>
+			    <textarea class="form-control" formControlName="content" required #input></div>></textarea>
+			  </div>
+			  <button [disabled]="!messageInputForm.valid" type="submit" class="btn btn-primary">Send</button>
+			</form>
+		</div>
+	</div>
+	<!-- <div>
+		<a class="backstage" href="">Behind the scenes +</a>
+		<div class="backstage">
+			<p>Watch the Angular form controls in action as you fill in the form.</p>-->
+
+			<!-- Note: Remove this later -->
+			<!-- <pre>{{ messageInputForm.value | json }}</pre>
+			<pre>Plate Number Valid? {{ messageInputForm.controls.plateNumber.valid }}</pre>
+			<pre>Plate Number Touched? {{ messageInputForm.controls.plateNumber.touched }}</pre>
+			<pre>Messages Array: {{ messageInputForm.value | json }}</pre>
+		</div>
+	</div> -->
+</div>

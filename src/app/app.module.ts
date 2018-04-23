@@ -16,23 +16,3 @@ import { CoreModule } from './core/core.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-  // declarations: [
-  //   AppComponent,
-  //   MessageComponent,
-  //   MessageListComponent,
-  //   MessageInputComponent,
-  //   UserSigninComponent,
-  //   UserSignupComponent,
-  //   UserLogoutComponent,
-  //   UserComponent,
-  //   HeaderComponent
-  // ],
-  // imports: [
-  //   BrowserModule,
-  //   HttpModule,
-  //   FormsModule,
-  //   ReactiveFormsModule
-  // ],
-  // providers: [DataService, AuthService, MessageService],
-  // bootstrap: [AppComponent]

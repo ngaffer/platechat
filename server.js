@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
 app.use('/api', api);
-api.use('/', appRoutes);
+app.use('/', appRoutes);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
