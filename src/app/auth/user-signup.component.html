@@ -1,81 +1,83 @@
-<div class="panel panel-default">
-	<div class="panel-heading">User Signup</div>
-	<div class="panel-body">
-		<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
-		  <div class="form-group"
-		  	[ngClass]="{
-	  			'has-error': firstName.invalid && firstName.touched,
-	  			'has-success': firstName.valid && firstName.dirty
-	  		}">
-		    <label for="firstName">First name</label>
-		    <input type="text" class="form-control" formControlName="firstName">
-		    <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"> 
-    			<p class="help-block" *ngIf="firstName.errors.required">First Name is required.</p>
-    		</div>
-		  </div>
-		  <div class="form-group"
-		  	[ngClass]="{
-	  			'has-error': lastName.invalid && lastName.touched,
-	  			'has-success': lastName.valid && lastName.dirty
-	  		}">
-		    <label for="lastName">Last Name</label>
-		    <input type="text" class="form-control" formControlName="lastName">
-		    <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"> 
-    			<p class="help-block" *ngIf="lastName.errors.required">Last Name is required.</p>
-    		</div>
-		  </div>
-		  <div class="form-group"
-		  	[ngClass]="{
-	  			'has-error': email.invalid && email.touched,
-	  			'has-success': email.valid && email.dirty
-	  		}">
-		    <label for="email">Email</label>
-		    <input type="email" class="form-control" formControlName="email">
-		    <div *ngIf="email.errors && (email.dirty || email.touched)"> 
-    			<p class="help-block" *ngIf="email.errors.required">Email is required.</p>
-    			<p class="help-block" *ngIf="email.errors.pattern">Email must follow format <i>me@domain.com</i>.</p>
-    			<p class="help-block" *ngIf="email.errors.emailDomain">Email must be on the codecraft.tv domain.</p>
-  			</div>
-		  </div>
-		  <fieldset formGroupName="passwordValid">
+<div class="col-md-8">
+	<div class="panel panel-default">
+		<div class="panel-heading">User Signup</div>
+		<div class="panel-body">
+			<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
 			  <div class="form-group"
 			  	[ngClass]="{
-		  			'has-error': password.invalid && password.touched,
-		  			'has-success': password.valid && password.dirty
+		  			'has-error': firstName.invalid && firstName.touched,
+		  			'has-success': firstName.valid && firstName.dirty
 		  		}">
-			    <label for="password">Password</label>
-			    <input type="password" class="form-control" formControlName="password">
-	  			<div *ngIf="password.errors && (password.dirty || password.touched)">
-					  <p class="help-block" *ngIf="password.errors.required">Password is required.</p>
-					  <p class="help-block" *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters. </p>
-					</div>
+			    <label for="firstName">First name</label>
+			    <input type="text" class="form-control" formControlName="firstName">
+			    <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"> 
+	    			<p class="help-block" *ngIf="firstName.errors.required">First Name is required.</p>
+	    		</div>
 			  </div>
 			  <div class="form-group"
 			  	[ngClass]="{
-		  			'has-error': rePassword.invalid && rePassword.touched,
-		  			'has-success': rePassword.valid && rePassword.dirty
+		  			'has-error': lastName.invalid && lastName.touched,
+		  			'has-success': lastName.valid && lastName.dirty
 		  		}">
-			    <label for="rePassword">Confirm Password</label>
-			    <input type="password" class="form-control" formControlName="rePassword">
-			    <div *ngIf="rePassword.errors && (rePassword.dirty || rePassword.touched)">
-					  <p class="help-block" *ngIf="rePassword.errors.required">Password is required.</p>
-					  <p class="help-block" *ngIf="rePassword.errors.passwordMatch">Password match error.</p>
-					</div>
+			    <label for="lastName">Last Name</label>
+			    <input type="text" class="form-control" formControlName="lastName">
+			    <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"> 
+	    			<p class="help-block" *ngIf="lastName.errors.required">Last Name is required.</p>
+	    		</div>
 			  </div>
-			</fieldset>
-		  <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid" (click)="onSignup()">Signup</button>
-		</form>
-		<div>
-			<a class="backstage" href="">Behind the scenes +</a>
-			<div class="backstage">
-				<p>Watch the Angular form controls in action as you fill in the form.</p>
-				<pre>{{ signupForm.value | json }}</pre>
-				<!-- <pre>passwordMatch.valid: {{ signupForm.controls.passwordMatch }}</pre> -->
-				<pre>firstName.valid: {{ signupForm.controls.firstName.valid }}</pre>
-				<pre>lastname.valid: {{ signupForm.controls.lastName.valid }}</pre>
-				<pre>email.valid: {{ signupForm.controls.email.valid }}</pre>
-				<pre>password.valid: {{ signupForm.controls.passwordValid.controls.password.valid }}</pre>
-			</div>
+			  <div class="form-group"
+			  	[ngClass]="{
+		  			'has-error': email.invalid && email.touched,
+		  			'has-success': email.valid && email.dirty
+		  		}">
+			    <label for="email">Email</label>
+			    <input type="email" class="form-control" formControlName="email">
+			    <div *ngIf="email.errors && (email.dirty || email.touched)"> 
+	    			<p class="help-block" *ngIf="email.errors.required">Email is required.</p>
+	    			<p class="help-block" *ngIf="email.errors.pattern">Email must follow format <i>me@domain.com</i>.</p>
+	    			<p class="help-block" *ngIf="email.errors.emailDomain">Email must be on the codecraft.tv domain.</p>
+	  			</div>
+			  </div>
+			  <fieldset formGroupName="passwordValid">
+				  <div class="form-group"
+				  	[ngClass]="{
+			  			'has-error': password.invalid && password.touched,
+			  			'has-success': password.valid && password.dirty
+			  		}">
+				    <label for="password">Password</label>
+				    <input type="password" class="form-control" formControlName="password">
+		  			<div *ngIf="password.errors && (password.dirty || password.touched)">
+						  <p class="help-block" *ngIf="password.errors.required">Password is required.</p>
+						  <p class="help-block" *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters. </p>
+						</div>
+				  </div>
+				  <div class="form-group"
+				  	[ngClass]="{
+			  			'has-error': rePassword.invalid && rePassword.touched,
+			  			'has-success': rePassword.valid && rePassword.dirty
+			  		}">
+				    <label for="rePassword">Confirm Password</label>
+				    <input type="password" class="form-control" formControlName="rePassword">
+				    <div *ngIf="rePassword.errors && (rePassword.dirty || rePassword.touched)">
+						  <p class="help-block" *ngIf="rePassword.errors.required">Password is required.</p>
+						  <p class="help-block" *ngIf="rePassword.errors.passwordMatch">Password match error.</p>
+						</div>
+				  </div>
+				</fieldset>
+			  <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid" (click)="onSignup()">Signup</button>
+			</form>
+			<!-- <div>
+				<a class="backstage" href="">Behind the scenes +</a>
+				<div class="backstage">
+					<p>Watch the Angular form controls in action as you fill in the form.</p>
+					<pre>{{ signupForm.value | json }}</pre> -->
+					<!-- <pre>passwordMatch.valid: {{ signupForm.controls.passwordMatch }}</pre> -->
+					<!-- <pre>firstName.valid: {{ signupForm.controls.firstName.valid }}</pre>
+					<pre>lastname.valid: {{ signupForm.controls.lastName.valid }}</pre>
+					<pre>email.valid: {{ signupForm.controls.email.valid }}</pre>
+					<pre>password.valid: {{ signupForm.controls.passwordValid.controls.password.valid }}</pre>
+				</div>
+			</div> -->
 		</div>
 	</div>
 </div>
