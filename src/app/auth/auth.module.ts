@@ -4,9 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { UserComponent } from './user.component';
-import { UserSigninComponent } from './user-signin.component';
-import { UserSignupComponent } from './user-signup.component';
-import { UserLogoutComponent } from './user-logout.component';
+import { UserSigninComponent } from './signin/user-signin.component';
+import { UserSignupComponent } from './signup/user-signup.component';
+import { UserLogoutComponent } from './logout/user-logout.component';
 
 @NgModule({
 	imports: [
@@ -17,8 +17,8 @@ import { UserLogoutComponent } from './user-logout.component';
 	declarations: [
 		UserComponent,
 		UserSigninComponent,
-	  UserSignupComponent,
-	  UserLogoutComponent
+		UserSignupComponent,
+		UserLogoutComponent
 	]
 })
 export class AuthModule {
