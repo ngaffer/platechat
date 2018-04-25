@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 
 import { User } from './user.model';
 import { Plate } from './plate.model';
@@ -6,18 +7,24 @@ import { Plate } from './plate.model';
 @Injectable()
 export class AuthService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
-  addUser(user: User) {
-
+  signup(user: User) {
+  	const body = JSON.stringify(user);
+  	const headers = new Headers({'Content-Type': 'application/json'});
+  	return this.http.post('http://localhost:3000/user', body);
   }
 
-  getUser() {
-  	alert('hello');
-  }
+  // addUser(user: User) {
 
-  addPlate(plate: Plate) {
+  // }
 
-  }
+  // getUser() {
+  // 	alert('hello');
+  // }
+
+  // addPlate(plate: Plate) {
+
+  // }
 
 }
