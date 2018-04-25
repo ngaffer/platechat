@@ -22,44 +22,4 @@ router.post('/test', function(req, ress, next) {
     res.redirect('/');
 });
 
-// Connect
-// const connection = (closure) => {
-//     return mongoose.connect('mongodb://localhost:27017/platechat', (err, client) => {
-//         if (err) return console.log(err);
-
-//         let db = mongoose.db('platechat');
-//         closure(db);
-//     });
-// };
-
-// Error handling
-// const sendError = (err, res) => {
-//     response.status = 501;
-//     response.message = typeof err == 'object' ? err.message : err;
-//     res.status(501).json(response);
-// };
-
-// Response handling
-// let response = {
-//     status: 200,
-//     data: [],
-//     message: null
-// };
-
-// Get users
-// router.get('/test', (req, res) => {
-//     connection((db) => {
-//         db.collection('tests')
-//             .find()
-//             .toArray()
-//             .then((users) => {
-//                 response.data = users;
-//                 res.json(response);
-//             })
-//             .catch((err) => {
-//                 sendError(err, res);
-//             });
-//     });
-// });
-
 module.exports = router;
