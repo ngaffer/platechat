@@ -15,7 +15,7 @@ router.post('/', function(req, res, next) {
     let user = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        password: bcrypt.hash(req.body.password),
+        password: req.body.password,
         email: req.body.email
     })
     user.save(function (err, result) {

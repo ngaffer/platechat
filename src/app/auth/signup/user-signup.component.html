@@ -39,46 +39,44 @@
 		    			<p class="help-block" *ngIf="email.errors.emailDomain">Email must be on the codecraft.tv domain.</p>
 		  			</div>
 				  </div>
-				  <fieldset formGroupName="passwordValid">
-					  <div class="form-group"
-					  	[ngClass]="{
-				  			'has-error': password.invalid && password.touched,
-				  			'has-success': password.valid && password.dirty
-				  		}">
-					    <label for="password">Password</label>
-					    <input type="password" class="form-control" formControlName="password">
-			  			<div *ngIf="password.errors && (password.dirty || password.touched)">
-							  <p class="help-block" *ngIf="password.errors.required">Password is required.</p>
-							  <p class="help-block" *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters. </p>
-							</div>
-					  </div>
-					  <div class="form-group"
-					  	[ngClass]="{
-				  			'has-error': rePassword.invalid && rePassword.touched,
-				  			'has-success': rePassword.valid && rePassword.dirty
-				  		}">
-					    <label for="rePassword">Confirm Password</label>
-					    <input type="password" class="form-control" formControlName="rePassword">
-					    <div *ngIf="rePassword.errors && (rePassword.dirty || rePassword.touched)">
-							  <p class="help-block" *ngIf="rePassword.errors.required">Password is required.</p>
-							  <p class="help-block" *ngIf="rePassword.errors.passwordMatch">Password match error.</p>
-							</div>
-					  </div>
-					</fieldset>
-				  <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid" (click)="onSignup()">Signup</button>
+				  <div class="form-group"
+				  	[ngClass]="{
+			  			'has-error': password.invalid && password.touched,
+			  			'has-success': password.valid && password.dirty
+			  		}">
+				    <label for="password">Password</label>
+				    <input type="password" class="form-control" formControlName="password">
+		  			<div *ngIf="password.errors && (password.dirty || password.touched)">
+						  <p class="help-block" *ngIf="password.errors.required">Password is required.</p>
+						  <p class="help-block" *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters. </p>
+						</div>
+				  </div>
+				  <div class="form-group"
+				  	[ngClass]="{
+			  			'has-error': rePassword.invalid && rePassword.touched,
+			  			'has-success': rePassword.valid && rePassword.dirty
+			  		}">
+				    <label for="rePassword">Confirm Password</label>
+				    <input type="password" class="form-control" formControlName="rePassword">
+				    <div *ngIf="rePassword.errors && (rePassword.dirty || rePassword.touched)">
+						  <p class="help-block" *ngIf="rePassword.errors.required">Password is required.</p>
+						  <p class="help-block" *ngIf="rePassword.errors.passwordMatch">Password match error.</p>
+						</div>
+				  </div>
+				  <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid">Signup</button>
 				</form>
-				<!-- <div>
+				<div>
 					<a class="backstage" href="">Behind the scenes +</a>
 					<div class="backstage">
 						<p>Watch the Angular form controls in action as you fill in the form.</p>
-						<pre>{{ signupForm.value | json }}</pre> -->
+						<pre>{{ signupForm.value | json }}</pre>
 						<!-- <pre>passwordMatch.valid: {{ signupForm.controls.passwordMatch }}</pre> -->
-						<!-- <pre>firstName.valid: {{ signupForm.controls.firstName.valid }}</pre>
+						<pre>firstName.valid: {{ signupForm.controls.firstName.valid }}</pre>
 						<pre>lastname.valid: {{ signupForm.controls.lastName.valid }}</pre>
 						<pre>email.valid: {{ signupForm.controls.email.valid }}</pre>
-						<pre>password.valid: {{ signupForm.controls.passwordValid.controls.password.valid }}</pre>
+						<!-- <pre>password.valid: {{ signupForm.controls.passwordValid.controls.password.valid }}</pre> -->
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</div>
