@@ -3,6 +3,6 @@ export class Plate {
     public plateNumber: string,
     public plateState: string,
     public userId: string,
-    public plateId?: string,) {
+    public plateId?: string) {
   }
 }

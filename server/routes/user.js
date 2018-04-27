@@ -11,22 +11,23 @@ mongoose.connect('mongodb://localhost:27017/platechat');
 //     res.send('hello');
 // });
 
+// assumes path "/user"
 router.post('/', function(req, res, next) {
     let user = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: req.body.password,
         email: req.body.email
-    })
+    });
     user.save(function (err, result) {
         if (err) {
             return res.status(500).json({
-                title: 'an error occured',
+                title: 'An error occurred.',
                 error: err
             });
         }
         res.status(201).json({
-            message: 'User created',
+            message: 'User created.',
             obj: result
         });
     });

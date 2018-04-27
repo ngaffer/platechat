@@ -20,4 +20,4 @@ export const navigationLinks = [
         order: 2,
         overrideFunction: function() { console.log('override function clicked'); }
     }
-]
+];

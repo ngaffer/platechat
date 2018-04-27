@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 
 import {CoreRoutingModule} from './core-routing.module';
@@ -11,11 +12,15 @@ import {HeaderComponent} from './header/header.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {LoginComponent} from './login/login.component';
 
+// --> Cleanup HttpModule when old data.service is removed
+// and remove HttpModule from package.json
+
 @NgModule({
   imports: [
     CommonModule,
     CoreRoutingModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   declarations: [
     HeaderComponent,

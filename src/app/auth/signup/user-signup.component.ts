@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {User} from '../user.model';
 import {AuthService} from '../auth.service';
-
+import {User} from '../user.model';
 
 function emailDomainValidator(control: FormControl) {
   let email = control.value;
@@ -25,7 +24,6 @@ function emailDomainValidator(control: FormControl) {
 //   console.log(control);
 //   return null;
 // }
-
 
 @Component({
   selector: 'app-user-signup',
