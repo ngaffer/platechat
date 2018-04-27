@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { User } from './user.model';
-import { Plate } from './plate.model'
+import {User} from './user.model';
+import {Plate} from './plate.model';
 
 @Component({
   selector: 'app-user',
@@ -10,25 +10,25 @@ import { Plate } from './plate.model'
 })
 export class UserComponent implements OnInit {
 
-	user: User = new User(
-		'Natasha',
-		'Gaffer',
-		'fakepassword',
-		'ngaffer@gmail.com',
-		'userid',
-		'plateid',
-		'5075813719',
-		'groupid',
-		true,
-		true
-	);
+  user: User = new User(
+    'Natasha',
+    'Gaffer',
+    'fakepassword',
+    'ngaffer@gmail.com',
+    'userid',
+    'plateid',
+    '5075813719',
+    'groupid',
+    true,
+    true
+  );
 
-	plate: Plate = new Plate(
-		'MHM123',
-		'plateid',
-		'Wisconsin',
-		'userid'
-	);
+  plate: Plate = new Plate(
+    'MHM123',
+    'plateid',
+    'Wisconsin',
+    'userid'
+  );
 
   constructor() { }
 
