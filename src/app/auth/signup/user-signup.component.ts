@@ -40,7 +40,6 @@ export class UserSignupComponent implements OnInit {
 	firstName: FormControl;
 	lastName: FormControl;
 	email: FormControl;
-  passwordValid: FormGroup;
 	password: FormControl;
   rePassword: FormControl;
 
@@ -72,16 +71,23 @@ export class UserSignupComponent implements OnInit {
   		firstName: this.firstName,
   		lastName: this.lastName,
   		email: this.email,
-      passwordValid: new FormGroup({
-        password: this.password,
-        rePassword: this.rePassword
-      })
+      password: this.password,
+      rePassword: this.rePassword
   	});
   }
 
-  onSignup() {
-  	const user = new User('Natasha','Gaffer','testsecret','nat@gmail.com');
-    this.authService.addUser(user);
+  onSubmit() {
+  	const user = new User(
+      this.firstName.value,
+      this.lastName.value,
+      this.password.value,
+      this.email.value
+    );
+    this.authService.signup(user)
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error)
+      );
   }
 
 }
