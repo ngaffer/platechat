@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HttpModule} from '@angular/http';
+import {RouterModule} from '@angular/router';
 
-import { CoreRoutingModule } from './core-routing.module';
-import { DataService } from '../data.service';
-import { AuthService } from '../auth/auth.service';
-import { MessageService } from '../messages/message.service';
-import { HeaderComponent } from './header/header.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
+import {CoreRoutingModule} from './core-routing.module';
+import {DataService} from '../data.service';
+import {AuthService} from '../auth/auth.service';
+import {MessageService} from '../messages/message.service';
+import {HeaderComponent} from './header/header.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   imports: [
@@ -23,13 +23,13 @@ import { LoginComponent } from './login/login.component';
     LoginComponent
   ],
   exports: [
-  	RouterModule,
-  	HeaderComponent
+    RouterModule,
+    HeaderComponent
   ],
   providers: [
-  	DataService, 
-  	AuthService, 
-  	MessageService
+    DataService,
+    AuthService,
+    MessageService
   ]
 })
 export class CoreModule { }

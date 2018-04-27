@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { DataService } from './data.service';
-import { MessageService } from './messages/message.service';
-import { AuthService } from './auth/auth.service';
+import {DataService} from './data.service';
+import {MessageService} from './messages/message.service';
+import {AuthService} from './auth/auth.service';
 
 @Component({
   selector: 'app-root',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-user-logout',
@@ -13,7 +13,7 @@ export class UserLogoutComponent implements OnInit {
   }
 
   onLogout() {
-  	
+
   }
 
 }

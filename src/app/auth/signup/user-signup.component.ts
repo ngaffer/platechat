@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { User } from '../user.model';
-import { AuthService } from '../auth.service';
+import {User} from '../user.model';
+import {AuthService} from '../auth.service';
 
 
 function emailDomainValidator(control: FormControl) {
   let email = control.value;
-  if (email && email.indexOf("@") != -1) {
-    let [_, domain] = email.split("@");
-    if (domain !== "codecraft.tv") {
+  if (email && email.indexOf('@') != -1) {
+    let [_, domain] = email.split('@');
+    if (domain !== 'codecraft.tv') {
       return {
         emailDomain: {
           parsedDomain: domain
         }
-      }
+      };
     }
   }
   return null;
@@ -37,27 +37,27 @@ export class UserSignupComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   signupForm: FormGroup;
-	firstName: FormControl;
-	lastName: FormControl;
-	email: FormControl;
-	password: FormControl;
+  firstName: FormControl;
+  lastName: FormControl;
+  email: FormControl;
+  password: FormControl;
   rePassword: FormControl;
 
   ngOnInit() {
-  	this.createFormControls();
-  	this.createForm();
+    this.createFormControls();
+    this.createForm();
   }
 
   createFormControls() {
-  	this.firstName = new FormControl('', Validators.required);
-  	this.lastName = new FormControl('', Validators.required);
-  	this.email = new FormControl('', [
-      Validators.required, 
-      Validators.pattern("[^ @]*@[^ @]*"),
+    this.firstName = new FormControl('', Validators.required);
+    this.lastName = new FormControl('', Validators.required);
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.pattern('[^ @]*@[^ @]*'),
       emailDomainValidator
     ]);
-  	this.password = new FormControl('', [
-      Validators.minLength(8), 
+    this.password = new FormControl('', [
+      Validators.minLength(8),
       Validators.required
     ]);
     this.rePassword = new FormControl('', [
@@ -67,17 +67,17 @@ export class UserSignupComponent implements OnInit {
   }
 
   createForm() {
-  	this.signupForm = new FormGroup({
-  		firstName: this.firstName,
-  		lastName: this.lastName,
-  		email: this.email,
+    this.signupForm = new FormGroup({
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
       password: this.password,
       rePassword: this.rePassword
-  	});
+    });
   }
 
   onSubmit() {
-  	const user = new User(
+    const user = new User(
       this.firstName.value,
       this.lastName.value,
       this.password.value,
