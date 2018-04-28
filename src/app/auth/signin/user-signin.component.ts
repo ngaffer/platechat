@@ -31,6 +31,7 @@ export class UserSigninComponent implements OnInit {
 
   onSignin() {
     alert('it worked');
+    this.signinForm.reset();
   }
 
 }
