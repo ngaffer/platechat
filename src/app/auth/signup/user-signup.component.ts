@@ -4,20 +4,20 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {User} from '../user.model';
 
-function emailDomainValidator(control: FormControl) {
-  let email = control.value;
-  if (email && email.indexOf('@') != -1) {
-    let [_, domain] = email.split('@');
-    if (domain !== 'codecraft.tv') {
-      return {
-        emailDomain: {
-          parsedDomain: domain
-        }
-      };
-    }
-  }
-  return null;
-}
+// function emailDomainValidator(control: FormControl) {
+//   let email = control.value;
+//   if (email && email.indexOf('@') != -1) {
+//     let [_, domain] = email.split('@');
+//     if (domain !== 'codecraft.tv') {
+//       return {
+//         emailDomain: {
+//           parsedDomain: domain
+//         }
+//       };
+//     }
+//   }
+//   return null;
+// }
 
 // function passwordMatchValidator(control: FormControl) {
 //   let control = control.value;
@@ -51,11 +51,11 @@ export class UserSignupComponent implements OnInit {
     this.lastName = new FormControl('', Validators.required);
     this.email = new FormControl('', [
       Validators.required,
-      Validators.pattern('[^ @]*@[^ @]*'),
-      emailDomainValidator
+      Validators.email
     ]);
     this.password = new FormControl('', [
       Validators.minLength(8),
+      Validators.minLength(12),
       Validators.required
     ]);
     this.rePassword = new FormControl('', [
@@ -74,7 +74,7 @@ export class UserSignupComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSignup() {
     const user = new User(
       this.firstName.value,
       this.lastName.value,
@@ -86,6 +86,7 @@ export class UserSignupComponent implements OnInit {
         data => console.log(data),
         error => console.log(error)
       );
+    this.signupForm.reset();
   }
 
 }

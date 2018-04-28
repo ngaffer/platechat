@@ -1,22 +1,31 @@
 <div class="panel panel-default">
 	<div class="panel-heading">User Signin</div>
 	<div class="panel-body">
-		<form [formGroup]="signinForm" novalidate>
-		  <div class="form-group" 
+		<form [formGroup]="signinForm" [ngSubmit]="onSignin" novalidate>
+		  <div class="form-group"
 		  	[ngClass]="{
-		  		'has-error': email.invalid && email.touched
+		  		'has-error': email.invalid && email.touched,
+		  		'has-success': email.valid && email.dirty
+
 		  	}">
 		    <label for="email">Email</label>
-		    <input type="email" class="form-control" formControlName="email" required>
+		    <input type="email" class="form-control" formControlName="email">
+        <div *ngIf="email.errors && (email.dirty || email.touched)">
+          <p class="help-block" *ngIf="email.errors.required">Email is required.</p>
+        </div>
 		  </div>
-		  <div class="form-group" 
+		  <div class="form-group"
 		  	[ngClass]="{
-		  		'has-error': password.invalid && password.touched
+		  		'has-error': password.invalid && password.touched,
+		  		'has-success': password.valid && password.dirty
 		  	}">
 		    <label for="password">Password</label>
-		    <input type="password" class="form-control" formControlName="password" required>
+		    <input type="password" class="form-control" formControlName="password">
+        <div *ngIf="password.errors && (password.dirty || password.touched)">
+          <p class="help-block" *ngIf="password.errors.required">Password is required.</p>
+        </div>
 		  </div>
-		  <button [disabled]="!signinForm.valid" type="submit" class="btn btn-primary" (click)="onSignin">Signin</button>
+		  <button [disabled]="!signinForm.valid" type="submit" class="btn btn-primary">Signin</button>
 		</form>
 	</div>
 </div>
