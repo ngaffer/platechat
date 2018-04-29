@@ -20,7 +20,6 @@ import {User} from '../user.model';
 // }
 
 // function passwordMatchValidator(control: FormControl) {
-//   let control = control.value;
 //   console.log(control);
 //   return null;
 // }
@@ -38,6 +37,7 @@ export class UserSignupComponent implements OnInit {
   firstName: FormControl;
   lastName: FormControl;
   email: FormControl;
+  passwordGroup: FormGroup;
   password: FormControl;
   rePassword: FormControl;
 
@@ -50,28 +50,37 @@ export class UserSignupComponent implements OnInit {
     this.firstName = new FormControl('', Validators.required);
     this.lastName = new FormControl('', Validators.required);
     this.email = new FormControl('', [
-      Validators.required,
-      Validators.email
+      Validators.minLength(5),
+      Validators.email,
+      Validators.required
     ]);
     this.password = new FormControl('', [
       Validators.minLength(8),
-      Validators.minLength(12),
+      Validators.maxLength(12),
       Validators.required
     ]);
     this.rePassword = new FormControl('', [
-      Validators.required,
-      // passwordMatchValidator
+      Validators.required
     ]);
   }
 
   createForm() {
+    this.passwordGroup = new FormGroup({
+      password: this.password,
+      rePassword: this.rePassword
+    }, this.passwordMatchValidator);
     this.signupForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      password: this.password,
-      rePassword: this.rePassword
+      passwordGroup: this.passwordGroup
     });
+    console.log(this.signupForm);
+  }
+
+  passwordMatchValidator(passwordGroup: FormGroup) {
+    return passwordGroup.get('password').value === passwordGroup.get('rePassword').value
+      ? null : {'mismatch': true};
   }
 
   onSignup() {

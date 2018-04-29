@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">User Signin</div>
 	<div class="panel-body">
-		<form [formGroup]="signinForm" [ngSubmit]="onSignin" novalidate>
+		<form [formGroup]="signinForm" (ngSubmit)="onSignin" novalidate>
 		  <div class="form-group"
 		  	[ngClass]="{
 		  		'has-error': email.invalid && email.touched,
