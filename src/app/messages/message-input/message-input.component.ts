@@ -52,7 +52,13 @@ export class MessageInputComponent implements OnInit {
   onSubmit() {
     const message = new Message(this.messageInputForm.value.content, 'Max');
     const plate = new Plate(this.messageInputForm.value.plateNumber, this.messageInputForm.value.plateState, 'Max');
-    this.messageService.addMessage(message);
+    this.messageService.addMessage(message)
+      // subscribe has three callback methods
+      .subscribe(
+        // data: whenever we receive a response / new data
+        data => console.log(data),
+        error => console.log(error),
+      );
     this.messageInputForm.reset();
   }
 
