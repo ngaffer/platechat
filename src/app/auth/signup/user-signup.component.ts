@@ -4,26 +4,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {User} from '../user.model';
 
-// function emailDomainValidator(control: FormControl) {
-//   let email = control.value;
-//   if (email && email.indexOf('@') != -1) {
-//     let [_, domain] = email.split('@');
-//     if (domain !== 'codecraft.tv') {
-//       return {
-//         emailDomain: {
-//           parsedDomain: domain
-//         }
-//       };
-//     }
-//   }
-//   return null;
-// }
-
-// function passwordMatchValidator(control: FormControl) {
-//   console.log(control);
-//   return null;
-// }
-
 @Component({
   selector: 'app-user-signup',
   templateUrl: './user-signup.component.html',
@@ -93,7 +73,7 @@ export class UserSignupComponent implements OnInit {
     this.authService.signup(user)
       .subscribe(
         data => console.log(data),
-        error => console.log(error)
+        error => console.error(error)
       );
     this.signupForm.reset();
   }
