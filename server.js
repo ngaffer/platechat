@@ -8,6 +8,7 @@ const app = express();
 const api = require('./server/routes/api');
 const appRoutes = require('./server/routes/app');
 const userRoutes = require('./server/routes/user');
+const messagesRoutes = require('./server/routes/messages');
 
 // Parsers
 app.use(bodyParser.json());
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
+app.use('/messages', messagesRoutes);
 app.use('/api', api);
 app.use('/user', userRoutes);
 app.use('/', appRoutes);

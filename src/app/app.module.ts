@@ -1,8 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
+
 
 @NgModule({
   declarations: [
@@ -10,7 +12,8 @@ import {CoreModule} from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    CoreModule
+    CoreModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
