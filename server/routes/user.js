@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const User = require('../../models/user');
-const bcrypt = require('bcryptjs');
+
 
 mongoose.connect('mongodb://localhost:27017/platechat');
 
@@ -33,6 +35,36 @@ router.post('', (req, res, next) => {
     });
 });
 
+router.post('signin', (req, res, next) => {
+  User.findOne({email: req.body.email}, (err, user) => {
+    if (err) {
+      return res.status(500).json({
+        title: 'An error occurred.',
+        error: err
+      });
+    }
+    if (!user) {
+      // Using generic message for security purposes
+      return res.status(401).json({
+        title: 'Login Failed.',
+        error: {message: 'Invalid login credentials.'}
+      })
+    }
+    // Passing same generic message for security purposes
+    if (!bcrypt.compareSync(req.body.password, user.password)) {
+      return res.status(401).json({
+        title: 'Login Failed.',
+        error: {message: 'Invalid login credentials.'}
+      })
+    }
+    var token = jwt.sign({user: user}, 'templocalsecret', {expiresIn: 7200});
+    response.status(200).json({
+      message: 'Successfully logged in.',
+      token: token,
+      userId: user._id
+    })
+  })
 
+});
 
 module.exports = router;
